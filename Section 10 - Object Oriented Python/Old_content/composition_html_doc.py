@@ -83,5 +83,5 @@ if __name__ == '__main__':
     my_page.add_tag("h2", "sub-heading")
     my_page.add_tag("p", "This is a paragraph that will appear on the page")
     # the display function calls the print of each title, head & body
-    with open('test.html','w',encoding='utf-8') as write_file:
+    with open('test.html', 'w', encoding='utf-8') as write_file:
         my_page.display(file=write_file)
