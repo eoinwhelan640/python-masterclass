@@ -137,7 +137,7 @@ def find_object(field, object_list):
 
 def load_data():
     artist_list = []
-    with open("albums.txt","r") as albums:
+    with open("albums.txt", "r") as albums:
         for line in albums:
             artist_field, album_field, year_field, song_field = tuple(line.strip('\n').split('\t'))
             year_filed = int(year_field)
@@ -237,7 +237,7 @@ def load_data():
 
 def create_checkfile(artist_list):
     """ Create a checkfile from the object data for comparison with original file"""
-    with open('checkfile.txt','w') as checkfile:
+    with open('checkfile.txt', 'w') as checkfile:
         for new_artist in artist_list:
             for new_album in new_artist.albums:
                 for new_song in new_album.tracks:
