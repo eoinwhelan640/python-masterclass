@@ -40,10 +40,16 @@ class Account(object):
     def _save_update(self,amount):
         new_balance = self._balance + amount
         deposit_time = pytz.utc.localize(dt.datetime.utcnow())
-        db.execute("UPDATE accounts SET balance = ? WHERE (name=?)",(new_balance, self.name))
-        db.execute("INSERT INTO history VALUES(?, ?, ?)", (deposit_time, self.name, amount))
-        db.commit()
-        self._balance = new_balance
+
+        try:
+            db.execute("UPDATE accounts SET balance = ? WHERE (name=?)",(new_balance, self.name))
+            db.execute("INSERT INTO history VALUES(?, ?, ?)", (deposit_time, self.name, amount))
+        except sqlite3.Error:
+            db.rollback()
+        else:
+            db.commit()
+            self._balance = new_balance
+
 
 
     def deposit(self, amount: float) -> float:

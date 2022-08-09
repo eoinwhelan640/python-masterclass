@@ -31,6 +31,8 @@ class Account(object):
         local_time = utc_time.astimezone()
         zone = local_time.tzinfo
         return utc_time, zone
+        # if wanted to force an error
+        #return 1
 
 
     def __init__(self, name: str, opening_balance: float = 0.0):
