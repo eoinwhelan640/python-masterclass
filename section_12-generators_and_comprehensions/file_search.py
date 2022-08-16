@@ -8,7 +8,7 @@ def find_albums(root, artist):
         #caps_name = artist.upper()
         for artist in fnmatch.filter(dir, artist):
         #for artist in fnmatch.filter((d.upper() for d in dir), caps_name):
-        #for artist in (d for d in dir if fnmatch.fnmatch(d.upper(), caps_name)):
+        #for artist in (d f;lr d in dir if fnmatch.fnmatch(d.upper(), caps_name)):
             subdir = os.path.join(path, artist)
             for album_path, albums, _ in os.walk(subdir):
                 for album in albums:
